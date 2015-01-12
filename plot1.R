@@ -1,0 +1,6 @@
+unzip("exdata-data-household_power_consumption.zip")
+d<-read.table("household_power_consumption.txt",header=TRUE,sep=";",na.strings="?")
+date <- as.Date(d$Date,format="%d/%m/%Y")
+time <- strptime(d$Time,format="%H:%M:%S")
+sub1<-subset(d,date>="2007-02-01" & date<="2007-02-02")
+hist(sub1$Global_active_power,col="red",main="Global Active Power",xlab="Global Active Power (kilowatts)")
